@@ -1,0 +1,121 @@
+@font-face {
+  font-family: 'Open Sans Italic';
+  src: url('./style/fonts/opensans-italic-variablefont_wdthwght-webfont.woff2') format('woff2'),
+       url('./style/fonts/opensans-italic-variablefont_wdthwght-webfont.woff') format('woff');
+  font-weight: 125 950;
+  font-stretch: 75% 125%;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  src: url('./style/fonts/opensans-variablefont_wdthwght-webfont.woff2') format('woff2'),
+       url('./style/fonts/opensans-variablefont_wdthwght-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body, html {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Open Sans', 'Roboto', sans-serif;
+  font-size: 1.1rem;
+  background-color: #181a27;
+}
+
+#root {
+  height: 100%;
+  overflow-x: hidden;
+  position: relative;
+}
+
+.navigation {
+  position: fixed;
+  display: flex;
+  width: 10vw;
+  margin-left: 90vw;
+  justify-content: flex-end;
+}
+
+.static {
+  position: absolute;
+}
+
+.navigation-box {
+  width: 100vw;
+  margin-right: 2.5rem;
+  max-height: 0;
+  display: flex;
+  overflow: hidden;
+  position: relative;
+  transition: max-height 0.4s ease-in-out, padding 0.4s ease-in-out;
+}
+
+.shown {
+  max-height: 20vh;
+  padding-top: 1.8rem;
+  padding-bottom: 2rem;
+}
+
+.nav-item-container {
+  position: relative;
+  flex: 1 1 auto;
+  display: flex;
+  justify-content: center;
+  gap: 1.6rem;
+  color: white;
+  font-size: 1.4rem;
+  animation: fadeOut 0.6s ease-out;
+}
+
+.shown .nav-item-container {
+  animation: fadeIn 0.9s ease-out;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0.1;
+    bottom: -60px;
+  }
+
+  100% {
+    opacity: 1;
+    bottom: 0;
+  }
+}
+
+@keyframes fadeOut {
+  100% {
+    opacity: 0.1;
+    bottom: -60px;
+  }
+
+  0% {
+    opacity: 1;
+    bottom: 0;
+  }
+}
+
+.navigation img {
+  width: 32px;
+  height: 32px;
+  margin: 0.8rem 1.4rem;
+}
+
+.content-holder {
+  background-color: #fbfdfc;
+  transition: margin 0.4s ease-in-out;
+  height: 100%;
+  margin: 0 0;
+  overflow: auto;
+}
+
+.squeeze {
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+}
