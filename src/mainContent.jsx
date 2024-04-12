@@ -1,7 +1,9 @@
 import './content.css'
-import { Outlet } from 'react-router-dom';
+import { NavLink, Outlet } from 'react-router-dom';
 import menuIcon from './assets/menu.svg';
 import menuWhiteIcon from './assets/menu_white.svg';
+import githubIcon from './assets/github.svg';
+import linkedinIcon from './assets/linkedin.svg';
 import { useEffect, useRef } from 'react';
 
 function MainContent() {
@@ -28,18 +30,29 @@ function MainContent() {
       <nav ref={navBox} className='navigation-box'>
         <div className='nav-item-container'>
           <div className='nav-item'>
-            Home
+            <NavLink to='/'>Home</NavLink>
           </div>
           <div className='nav-item'>
-            Projects
+            <NavLink to='/projects'>Projects</NavLink>
           </div>
           <div className='nav-item'>
-            About Me
+          <NavLink to='/about'>About Me</NavLink>
           </div>
         </div>
       </nav>
       <main ref={contentBox} className='content-holder'>
-        <Outlet />
+        <section className='main-content'>
+          <Outlet />
+        </section>
+        <footer className='footer'>
+          <div className='contact'>
+            <p><img src={githubIcon} alt='GitHub icon' /> <span><a href='https://github.com/JulianKings'>GitHub</a></span></p>
+            <p><img src={linkedinIcon} alt='LinkedIn icon' /> <span><a href='https://linkedin.com/in/julián-reyes-lahoz-05702a266'>LinkedIn</a></span></p>
+          </div>
+          <div className='copyright'>
+            © Julian Reyes 2024
+          </div>
+        </footer>
       </main>
     </>
   )
