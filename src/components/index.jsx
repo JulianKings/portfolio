@@ -73,6 +73,7 @@ function Index()
     const ballMovementX = useRef(2);
     const ballMovementY = useRef(-2);
     const barLocation  = useRef(0);
+    const announcementRef = useRef(null);
 
     useEffect(() => {
         if(gameStatus && gameStatus === "started")
@@ -89,6 +90,8 @@ function Index()
             ballMovementX.current = 2;
             ballMovementY.current = -2;
 
+            announcementRef.current.textContent = '';
+
             const gameBoxIteratorBase = gameBox();
             gameBoxIteratorBase.forEach((box) => {
                 if(box.classList.contains('box-hit'))
@@ -99,7 +102,7 @@ function Index()
 
             const repeatDrawInterval = setInterval(() => {
                 const gameBoxIterator = gameBox();
-                attemptLoop(repeatDrawInterval, canvasRef, ballPositionX, ballPositionY, barLocation, ballMovementX, ballMovementY, gameBoxIterator);
+                attemptLoop(repeatDrawInterval, canvasRef, ballPositionX, ballPositionY, barLocation, ballMovementX, ballMovementY, gameBoxIterator, announcementRef);
             }, 10)
     
             return () => clearInterval(repeatDrawInterval);
@@ -215,8 +218,9 @@ function Index()
                     <div className='bar-holder'>
                         <div ref={barRef} className='bar'></div>
                     </div>
+                    <div ref={announcementRef} className='game-announcements'></div>
                     <div className='stop-game'><button onClick={() =>  { setGameStatus('stopped') }} type='button'>Stop the game</button></div>
-                    <div className='stop-game'><button onClick={() =>  { setGameStatus('restarted'); }} type='button'>Restart the game</button></div>
+                    <div className='restart-game'><button onClick={() =>  { setGameStatus('restarted'); }} type='button'>Restart the game</button></div>
                 </div>
             </div>
             

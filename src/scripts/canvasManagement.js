@@ -6,7 +6,7 @@ const paddleHeight = 10;
 const wordsBoxPadding = 20;
 const wordsBoxHeight = 200;
 
-function attemptLoop(interval, canvasRef, ballPositionX, ballPositionY, barLocation, ballMovementX, ballMovementY, gameBox)
+function attemptLoop(interval, canvasRef, ballPositionX, ballPositionY, barLocation, ballMovementX, ballMovementY, gameBox, announcement)
 {
     const context = canvasRef.current.getContext("2d");
     // clean up canvas
@@ -19,11 +19,12 @@ function attemptLoop(interval, canvasRef, ballPositionX, ballPositionY, barLocat
     attemptDrawPaddle(context, barLocation)
 
     // attempt bounce logic
-    attemptBounce(interval, canvasRef, barLocation, ballPositionX, ballPositionY, ballMovementX, ballMovementY);
+    attemptBounce(interval, canvasRef, barLocation, ballPositionX, ballPositionY, ballMovementX, ballMovementY, announcement);
 
     // attempt bounce logic on text
     attemptTextBounce(canvasRef, ballPositionX, ballPositionY, ballMovementX, ballMovementY, gameBox)
 
+    attemptCheckVictory(interval, gameBox, announcement)
     // update pos
     ballPositionX.current += ballMovementX.current;
     ballPositionY.current += ballMovementY.current;
@@ -47,7 +48,7 @@ function attemptDrawPaddle(context, barLocation)
     context.closePath();
 }
 
-function attemptBounce(interval, canvasRef, barLocation, ballPositionX, ballPositionY, ballMovementX, ballMovementY)
+function attemptBounce(interval, canvasRef, barLocation, ballPositionX, ballPositionY, ballMovementX, ballMovementY, announcement)
 {
     // bouncing check
     if(ballPositionX.current + ballMovementX.current > (canvasRef.current.width - ballRadius) || ballPositionX.current + ballMovementX.current < ballRadius)
@@ -70,6 +71,7 @@ function attemptBounce(interval, canvasRef, barLocation, ballPositionX, ballPosi
         if(ballPositionY.current + ballMovementY.current > (canvasRef.current.height - ballRadius))
         {
             // game over
+            announcement.current.textContent = 'You lost!';
             clearInterval(interval);
         }
     }
@@ -107,6 +109,20 @@ function attemptTextBounce(canvasRef, ballPositionX, ballPositionY, ballMovement
             
             }        
         }
+    }
+}
+
+function attemptCheckVictory(interval, gameBox, announcement)
+{
+    const remainingBox = gameBox.filter((box) => {
+        return (!box.classList.contains('box-hit') && !box.classList.contains('space-hit'));
+    });
+
+    if(remainingBox.length === 0)
+    {
+        // game finished
+        announcement.current.textContent = 'You won!';
+        clearInterval(interval);
     }
 }
 
