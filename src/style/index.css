@@ -1,11 +1,18 @@
 .index-container {
     width: 100%;
+    position: relative;
+}
+
+.index-content-container {
+    width: 100%;
     max-width: 90ch;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 0.6rem;
     margin-top: 6rem;
+    position: relative;
+    padding: 1.6rem 1.2rem;
 }
 
 .index-container p {
@@ -13,7 +20,7 @@
     padding: 0;
 }
 
-.index-container .index-title {
+.index-container .index-title, .index-container .title-span {
     font-size: 1.6rem;
     font-weight: bold;
 }
@@ -23,7 +30,19 @@
     margin-top: 8rem;
 }
 
-.index-container .start-game button {
+.index-container .bar-holder
+{
+    width: 100%;
+    margin-top: 20rem;
+    position: relative;
+}
+
+.index-container .stop-game 
+{
+    margin-top: 2rem;
+}
+
+.index-container .start-game button, .index-container .stop-game button {
     background-color: #336199;
     color: white;
     border: 0;
@@ -34,7 +53,27 @@
     transition: all 0.2s ease-in;
 }
 
-.index-container .start-game button:hover {
+.index-container .start-game button:hover, .index-container .stop-game button:hover {
     background-color: #27374D;
     box-shadow: 0 0.25rem 0 #0d1725;
+}
+
+.bar-holder .bar {
+    width: 90px;
+    height: 0.6rem;
+    background-color: #fbfdfc;
+    position: absolute;
+}
+
+.index-canvas {
+    z-index: 10;
+    position: absolute;
+}
+
+.box-hit {
+    color: #fbfdfc;
+}
+
+.bold-span {
+    font-weight: bold;
 }
