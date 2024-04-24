@@ -1,0 +1,16 @@
+.project-holder {
+    width: 100%;
+    max-width: 90vw;
+    margin-top: 4rem;
+    padding: 0.6rem 1.2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(40ch, 25%));
+    gap: 1.4rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.loading-prompt {
+    display: flex;
+    justify-content: center;
+}
