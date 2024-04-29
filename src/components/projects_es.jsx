@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import '../style/projects.css';
 import ProjectItem from './items/projectItem';
 
-function Projects() {
+function Projects_ES() {
     const [projectList, setProjectList] = useState(null);
 
     useEffect(() => {
@@ -30,13 +30,13 @@ function Projects() {
         })
     }, []);
 
-    let projectContent = (<div className='loading-prompt'>Loading projects...</div>)
+    let projectContent = (<div className='loading-prompt'>Cargando proyectos...</div>)
 
     if(projectList && projectList.length > 0)
     {
-        projectContent = projectList.map((proj) => <ProjectItem key={proj._id} project={proj} lang='en'></ProjectItem>)
+        projectContent = projectList.map((proj) => <ProjectItem key={proj._id} project={proj} lang='es'></ProjectItem>)
     } else if(projectList) {
-        projectContent = (<div className='loading-prompt'>No projects available.</div>);
+        projectContent = (<div className='loading-prompt'>No hay proyectos disponibles.</div>);
     }
 
     return <>
@@ -46,4 +46,4 @@ function Projects() {
     </>
 }
 
-export default Projects
+export default Projects_ES

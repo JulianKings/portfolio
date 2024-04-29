@@ -116,6 +116,16 @@ body {
   margin: 0.8rem 1.4rem;
 }
 
+.navigation .icon-image {
+  width: 24px;
+  height: 24px;
+  align-self: center;
+  margin: 0;
+  object-fit: scale-down;
+  border-radius: 0.4rem;
+  
+}
+
 .content-holder {
   background-color: #fbfdfc;
   transition: margin 0.4s ease-in-out;

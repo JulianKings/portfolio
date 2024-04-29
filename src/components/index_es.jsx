@@ -61,7 +61,7 @@ ContentSpan.propTypes = {
     appendGameBox: PropTypes.func
 }
 
-function Index()
+function Index_ES()
 {
     const [gameStatus, setGameStatus] = useState(null);
     const [gameBox, addGameBox] = useMultiRefs();
@@ -102,7 +102,7 @@ function Index()
 
             const repeatDrawInterval = setInterval(() => {
                 const gameBoxIterator = gameBox();
-                attemptLoop(repeatDrawInterval, canvasRef, ballPositionX, ballPositionY, barLocation, ballMovementX, ballMovementY, gameBoxIterator, announcementRef, 'en');
+                attemptLoop(repeatDrawInterval, canvasRef, ballPositionX, ballPositionY, barLocation, ballMovementX, ballMovementY, gameBoxIterator, announcementRef, 'es');
             }, 10)
     
             return () => clearInterval(repeatDrawInterval);
@@ -135,22 +135,22 @@ function Index()
         foregroundRef.current = null;
         return <>
             <div className="index-container index-content-container">
-                <p className="index-title">Hello, my name is Julian Reyes</p>
-                <p>I am a <strong>self-taught</strong> full-stack web developer, always seeking to improve my skills.</p>
-                <p>You can check out my latest projects on <strong>the projects section</strong>.</p>
-                <p>Contact me at my <a href='https://linkedin.com/in/julián-reyes-lahoz-05702a266'>LinkedIn</a> or my e-mail: <strong>julli123@hotmail.es</strong></p>
-                <div className='start-game'><button onClick={() =>  { setGameStatus('started') }} type='button'>Play around a bit</button></div>
+                <p className="index-title">Hola, me llamo Julián Reyes</p>
+                <p>Soy un desarrollador web full-stack <strong>autodidacto</strong>, buscando siempre mejorar mis habilidades.</p>
+                <p>Puedes echarle un vistazo a mis últimos proyectos en <strong>la sección de proyectos</strong>.</p>
+                <p>Contáctame en mi <a href='https://linkedin.com/in/julián-reyes-lahoz-05702a266'>LinkedIn</a> o mi e-mail: <strong>julli123@hotmail.es</strong></p>
+                <div className='start-game'><button onClick={() =>  { setGameStatus('started') }} type='button'>Curiosear</button></div>
             </div>
             
         </>;
     } else {
-        let firstLine = 'Hello, my name is Julian Reyes';
-        let secondLine = 'I am a ';
-        let secondLineBold = 'self-taught';
-        let secondLineEnd = ' full-stack web developer, always seeking to improve my skills.';
-        let thirdLine = 'You can check out my latest projects on ';
-        let thirdLineBold = 'the projects section.';
-        let fourthLine = 'Contact me at my LinkedIn or my e-mail: '
+        let firstLine = 'Hola, me llamo Julián Reyes';
+        let secondLine = 'Soy un desarrollador web full-stack ';
+        let secondLineBold = 'autodidacto';
+        let secondLineEnd = ', buscando siempre mejorar mis habilidades.';
+        let thirdLine = 'Puedes echarle un vistazo a mis últimos proyectos en ';
+        let thirdLineBold = 'la sección de proyectos.';
+        let fourthLine = 'Contáctame en mi LinkedIn o mi e-mail: '
         let fourthLineBold = 'julli123@hotmail.es';
 
         let firstLineContent = '';
@@ -219,8 +219,8 @@ function Index()
                         <div ref={barRef} className='bar'></div>
                     </div>
                     <div ref={announcementRef} className='game-announcements'></div>
-                    <div className='stop-game'><button onClick={() =>  { setGameStatus('stopped') }} type='button'>Stop the game</button></div>
-                    <div className='restart-game'><button onClick={() =>  { setGameStatus('restarted'); }} type='button'>Restart the game</button></div>
+                    <div className='stop-game'><button onClick={() =>  { setGameStatus('stopped') }} type='button'>Volver atrás</button></div>
+                    <div className='restart-game'><button onClick={() =>  { setGameStatus('restarted'); }} type='button'>Reiniciar el juego</button></div>
                 </div>
             </div>
             
@@ -240,4 +240,4 @@ function Index()
     }
 }
 
-export default Index
+export default Index_ES

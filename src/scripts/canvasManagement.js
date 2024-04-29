@@ -6,7 +6,7 @@ const paddleHeight = 10;
 const wordsBoxPadding = 20;
 const wordsBoxHeight = 200;
 
-function attemptLoop(interval, canvasRef, ballPositionX, ballPositionY, barLocation, ballMovementX, ballMovementY, gameBox, announcement)
+function attemptLoop(interval, canvasRef, ballPositionX, ballPositionY, barLocation, ballMovementX, ballMovementY, gameBox, announcement, lang)
 {
     const context = canvasRef.current.getContext("2d");
     // clean up canvas
@@ -19,12 +19,12 @@ function attemptLoop(interval, canvasRef, ballPositionX, ballPositionY, barLocat
     attemptDrawPaddle(context, barLocation)
 
     // attempt bounce logic
-    attemptBounce(interval, canvasRef, barLocation, ballPositionX, ballPositionY, ballMovementX, ballMovementY, announcement);
+    attemptBounce(interval, canvasRef, barLocation, ballPositionX, ballPositionY, ballMovementX, ballMovementY, announcement, lang);
 
     // attempt bounce logic on text
     attemptTextBounce(canvasRef, ballPositionX, ballPositionY, ballMovementX, ballMovementY, gameBox)
 
-    attemptCheckVictory(interval, gameBox, announcement)
+    attemptCheckVictory(interval, gameBox, announcement, lang)
     // update pos
     ballPositionX.current += ballMovementX.current;
     ballPositionY.current += ballMovementY.current;
@@ -48,7 +48,7 @@ function attemptDrawPaddle(context, barLocation)
     context.closePath();
 }
 
-function attemptBounce(interval, canvasRef, barLocation, ballPositionX, ballPositionY, ballMovementX, ballMovementY, announcement)
+function attemptBounce(interval, canvasRef, barLocation, ballPositionX, ballPositionY, ballMovementX, ballMovementY, announcement, lang)
 {
     // bouncing check
     if(ballPositionX.current + ballMovementX.current > (canvasRef.current.width - ballRadius) || ballPositionX.current + ballMovementX.current < ballRadius)
@@ -71,7 +71,12 @@ function attemptBounce(interval, canvasRef, barLocation, ballPositionX, ballPosi
         if(ballPositionY.current + ballMovementY.current > (canvasRef.current.height - ballRadius))
         {
             // game over
-            announcement.current.textContent = 'You lost!';
+            if(lang === 'es')
+            {
+                announcement.current.textContent = '¡Has perdido!';
+            } else {
+                announcement.current.textContent = 'You lost!';
+            }
             clearInterval(interval);
         }
     }
@@ -112,7 +117,7 @@ function attemptTextBounce(canvasRef, ballPositionX, ballPositionY, ballMovement
     }
 }
 
-function attemptCheckVictory(interval, gameBox, announcement)
+function attemptCheckVictory(interval, gameBox, announcement, lang)
 {
     const remainingBox = gameBox.filter((box) => {
         return (!box.classList.contains('box-hit') && !box.classList.contains('space-hit'));
@@ -120,8 +125,13 @@ function attemptCheckVictory(interval, gameBox, announcement)
 
     if(remainingBox.length === 0)
     {
-        // game finished
-        announcement.current.textContent = 'You won!';
+        // game finished        
+        if(lang === 'en')
+        {
+            announcement.current.textContent = '¡Has ganado!';
+        } else {
+            announcement.current.textContent = 'You won!';
+        }
         clearInterval(interval);
     }
 }
