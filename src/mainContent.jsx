@@ -4,6 +4,8 @@ import menuIcon from './assets/menu.svg';
 import menuWhiteIcon from './assets/menu_white.svg';
 import githubIcon from './assets/github.svg';
 import linkedinIcon from './assets/linkedin.svg';
+import spainIcon from './assets/spain.png';
+import ukIcon from './assets/uk.png';
 import { useEffect, useRef } from 'react';
 
 function MainContent() {
