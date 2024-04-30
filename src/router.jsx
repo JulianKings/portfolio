@@ -3,6 +3,7 @@ import MainContent from "./mainContent";
 import ErrorPage from "./components/errorPage";
 import ProjectManager from "./components/projectsManager";
 import IndexManager from "./components/indexManager";
+import AboutManager from "./components/aboutManager";
 
 const Router = () => {
     const router = createBrowserRouter([
@@ -18,6 +19,10 @@ const Router = () => {
                   {
                     path: "projects",
                     element: <ProjectManager />
+                  },
+                  {
+                    path: "about",
+                    element: <AboutManager />
                   },
               ],
           }

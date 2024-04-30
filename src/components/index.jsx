@@ -1,65 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { Fragment, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import '../style/index.css';
 import useMultiRefs from '../scripts/helper/helper';
-import PropTypes from 'prop-types';
 import { attemptLoop } from '../scripts/canvasManagement';
-
-function ContentSpan({letter, previousContent, bold, title, appendGameBox})
-{
-    if(title)
-    {
-        if(/\s/.test(letter))
-        {
-            return <Fragment>
-                {previousContent}
-                <span ref={appendGameBox} className='title-span hit-span space-hit'>{letter}</span>
-            </Fragment>;
-        } else {
-            return <Fragment>
-                {previousContent}
-                <span ref={appendGameBox} className='title-span hit-span'>{letter}</span>
-            </Fragment>;
-        }
-    } else  {
-        if(bold)
-        {
-            if(/\s/.test(letter))
-            {
-                return <Fragment>
-                    {previousContent}
-                    <span ref={appendGameBox} className='bold-span hit-span space-hit'>{letter}</span>
-                </Fragment>;
-            } else {
-                return <Fragment>
-                    {previousContent}
-                    <span ref={appendGameBox} className='bold-span hit-span'>{letter}</span>
-                </Fragment>;
-            }
-        } else {
-            if(/\s/.test(letter))
-            {
-                return <Fragment>
-                    {previousContent}
-                    <span ref={appendGameBox} className='hit-span space-hit'>{letter}</span>
-                </Fragment>;
-            } else {
-                return <Fragment>
-                    {previousContent}
-                    <span ref={appendGameBox} className='hit-span'>{letter}</span>
-                </Fragment>;
-            }
-        }
-    }
-}
-
-ContentSpan.propTypes = {
-    letter: PropTypes.string,
-    previousContent: PropTypes.object,
-    bold: PropTypes.bool,
-    title: PropTypes.bool,
-    appendGameBox: PropTypes.func
-}
+import ContentSpan from './contentSpan';
+import { Link } from 'react-router-dom';
 
 function Index()
 {
@@ -137,7 +82,7 @@ function Index()
             <div className="index-container index-content-container">
                 <p className="index-title">Hello, my name is Julian Reyes</p>
                 <p>I am a <strong>self-taught</strong> full-stack web developer, always seeking to improve my skills.</p>
-                <p>You can check out my latest projects on <strong>the projects section</strong>.</p>
+                <p>You can check out my latest projects on <strong><Link to='/projects'>the projects section</Link></strong>.</p>
                 <p>Contact me at my <a href='https://linkedin.com/in/julián-reyes-lahoz-05702a266'>LinkedIn</a> or my e-mail: <strong>julli123@hotmail.es</strong></p>
                 <div className='start-game'><button onClick={() =>  { setGameStatus('started') }} type='button'>Play around a bit</button></div>
             </div>
