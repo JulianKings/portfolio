@@ -10,6 +10,14 @@
     overflow-x: hidden;
 }
 
+.about-me a {
+    color: white;
+}
+
+.about-me a:hover {
+    color: rgb(186, 186, 192);
+}
+
 .about-card-left, .about-card-right {
     background-color: rgb(23, 23, 41);
     color: white;

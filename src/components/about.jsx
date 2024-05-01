@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import '../style/about.css';
 import { InView } from "react-intersection-observer";
 
@@ -6,9 +7,10 @@ function About() {
     return <section className='about-me'>
         <InView as="div" onChange={(inView, entry) => { childEntersView(inView, entry) }} className={`about-card-left`}>
             <div className='about-card-title'>About me</div>
-            <div className='about-card-content'>My name is Julián Reyes Lahoz, I&apos;m a spanish self-taught full-stack web developer, although I&apos;ve also worked with desktop and mobile applications, I mostly prefer working on websites, customizing the user experience and trying to come up with new solutions to any challenge I face in web development.</div>
+            <div className='about-card-content'>My name is Julián Reyes Lahoz, I&apos;m a spanish self-taught full-stack web developer, although I&apos;ve also worked with desktop and mobile applications, I mostly prefer working on websites, customizing the user experience and trying to come up with new solutions or learning the existing ones to surpass any challenge I face in web development.</div>
             <div className='about-card-content'>I always strive to build enjoyable and easy to use websites, and then after they&apos;re built I try to polish them so they&apos;re available on mostly all devices and don&apos;t have any accessibility problems.</div>
             <div className='about-card-content'>My drive has always been to improve myself and learn more every day so I&apos;m able to craft the best product possible, which makes me very interested in any environment where I can hone my skills and improve myself.</div>
+            <div className='about-card-content'>My latest work can be found in <Link to='/projects'>the project section</Link>.</div>
         </InView>
         <InView as="div" onChange={(inView, entry) => { childEntersView(inView, entry) }} className={`about-card-right`}>
             <div className='about-card-title'>My toolbox</div>
@@ -24,7 +26,8 @@ function About() {
         </InView>
         <InView as="div" onChange={(inView, entry) => { childEntersView(inView, entry) }} className={`about-card-right`}>
             <div className='about-card-title'>Coding</div>
-            <div className='about-card-content'>Coding has always been something very present in my life.</div>
+            <div className='about-card-content'>Coding has always been something very present in my life, and the one thing I love the most is that it&apos;s something that is always in constant evolution. It drives me to keep up and improve myself and to learn new things constantly as people find ways to be more efficient or make their tools easier to work with, it&apos;s a world on itself.</div>
+            <div className='about-card-content'>I love solving problems, I love getting new challenges and I love the satisfaction you get when something that has been bugging you for a while finally gets resolved, so basically coding for me fits as good as a glove.</div>
         </InView>
     </section>;
 

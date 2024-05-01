@@ -6,7 +6,7 @@ function Projects() {
     const [projectList, setProjectList] = useState(null);
 
     useEffect(() => {
-        fetch("http://localhost:3000/projects", {                
+        fetch("https://portfolio-app-basic-ad1a811d14f8.herokuapp.com/projects", {                
             headers: {
                 'Content-Type': 'application/json'
             },
