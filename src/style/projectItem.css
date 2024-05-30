@@ -6,7 +6,7 @@
 }
 
 .project-image img {
-    width: 100%;
+    width: calc(100% - 0.06rem);
     height: 26rem;
     object-fit: cover;
 }
